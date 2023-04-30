@@ -1,0 +1,63 @@
+@import "reset.css";
+
+.background {
+  height: 100%;
+  position: relative;
+}
+.background img {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: 1;
+  opacity: 0.8;
+  float: inherit;
+}
+
+.left_box {
+  width: 30%;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.5;
+  position: absolute;
+  z-index: 2;
+  top: 0px;
+  float: left;
+}
+.left_box-search {
+  width: 50%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.left_box-search input {
+  border: none;
+  border-bottom: 1px solid white;
+  background-color: transparent;
+  width: 469.5;
+  height: 42.5;
+  font-size: 15px;
+  color: white;
+}
+.left_box-search input::placeholder {
+  color: white;
+}
+.left_box-search input::focus {
+  outline: none;
+}
+.left_box-search i {
+  color: white;
+}
+
+/* .day {
+  width: 70%;
+  height: 100vh;
+  opacity: 0.5;
+  position: absolute;
+  z-index: 2;
+  top: 0px;
+  float: right;
+}
+day h2 {
+  color: white;
+} */
