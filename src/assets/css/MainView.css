@@ -24,8 +24,7 @@
   float: left;
 }
 .left_box-search {
-  width: 50%;
-  height: 20%;
+  height: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,8 +33,7 @@
   border: none;
   border-bottom: 1px solid white;
   background-color: transparent;
-  width: 469.5;
-  height: 42.5;
+  width: 80%;
   font-size: 15px;
   color: white;
 }
