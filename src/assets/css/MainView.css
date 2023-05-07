@@ -28,18 +28,21 @@
   width: 30%;
   height: 100vh;
   background-color: black;
-  opacity: 0.5;
+  opacity: 0.3;
   position: relative;
   z-index: 2;
 }
 /* 검색창 */
-.left-box__search {
+.search-bar {
   height: 15%;
+  width: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
+  position: absolute;
 }
-.left-box__search input {
+.search-bar input {
   border: none;
   border-bottom: 1px solid white;
   background-color: transparent;
@@ -47,13 +50,13 @@
   font-size: 15px;
   color: white;
 }
-.left-box__search input::placeholder {
+.search-bar input::placeholder {
   color: white;
 }
-.left-box__search input::focus {
+.search-bar input::focus {
   outline: none;
 }
-.left-box__search i {
+.search-bar i {
   color: white;
 }
 
@@ -61,8 +64,6 @@
 .right-box {
   width: 70%;
   height: 100vh;
-  background-color: yellow;
-  opacity: 0.5;
   position: relative;
   z-index: 2;
 }

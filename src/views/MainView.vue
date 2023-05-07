@@ -4,11 +4,10 @@
       <img src="@/assets/image/cloudy.gif" />
     </div>
     <div class="leftright">
-      <div class="left-box">
-        <div class="left-box__search">
-          <input type="text" placeholder="Seach" />
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
+      <div class="left-box"></div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search" />
+        <i class="fa-solid fa-magnifying-glass"></i>
       </div>
       <div class="right-box">
         <div class="right-box__day">
