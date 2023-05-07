@@ -67,3 +67,15 @@
   position: relative;
   z-index: 2;
 }
+
+.right-box__day {
+  height: 10%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  color: white;
+  text-align: right;
+  text-shadow: 2px 2px 2px gray;
+  margin-right: 2.5%;
+  font-size: 27px;
+}
