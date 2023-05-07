@@ -13,6 +13,10 @@
         <div class="right-box__day">
           <h2>2023 May 01 Monday</h2>
         </div>
+        <div class="right-box__dust">
+          <h2>21㎍/㎥</h2>
+          <i class="fa-solid fa-circle-question"></i>
+        </div>
       </div>
     </div>
   </div>

@@ -71,13 +71,30 @@
 }
 
 .right-box__day {
-  height: 10%;
+  height: 7.5%;
   display: flex;
   justify-content: right;
-  align-items: center;
+  align-items: end;
   color: white;
   text-align: right;
   text-shadow: 2px 2px 2px gray;
   margin-right: 2.5%;
   font-size: 27px;
+}
+
+.right-box__dust {
+  height: 7%;
+  display: flex;
+  justify-content: right;
+  align-items: start;
+  color: white;
+  text-align: right;
+  text-shadow: 2px 2px 2px gray;
+  margin-right: 2.5%;
+  margin-top: 1%;
+  font-size: 27px;
+}
+
+.right-box__dust i {
+  margin-left: 0.5%;
 }
