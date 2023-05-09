@@ -17,6 +17,12 @@
           <h2>21㎍/㎥</h2>
           <i class="fa-solid fa-circle-question"></i>
         </div>
+        <div class="right-box__dust__detail">
+          <h2>좋음 0 ~ 15</h2>
+          <h2>보통 16 ~ 35</h2>
+          <h2>나쁨 36 ~ 75</h2>
+          <h2>매우 나쁨 76 ~</h2>
+        </div>
       </div>
     </div>
   </div>
