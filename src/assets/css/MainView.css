@@ -21,6 +21,7 @@
   height: 100vh;
   overflow: hidden;
   display: flex;
+  color: white;
 }
 
 /* 왼쪽 박스 */
@@ -47,7 +48,6 @@
   border-bottom: 1px solid white;
   background-color: transparent;
   width: 80%;
-  font-size: 15px;
   color: white;
   font-size: 18px;
 }
@@ -58,7 +58,6 @@
   outline: none;
 }
 .search-bar i {
-  color: white;
   font-size: 20px;
 }
 
@@ -75,7 +74,6 @@
   display: flex;
   justify-content: right;
   align-items: end;
-  color: white;
   text-align: right;
   text-shadow: 2px 2px 2px gray;
   margin-right: 2.5%;
@@ -87,7 +85,6 @@
   display: flex;
   justify-content: right;
   align-items: start;
-  color: white;
   text-align: right;
   text-shadow: 2px 2px 2px gray;
   margin-right: 2.5%;
@@ -103,7 +100,6 @@
   background: #2f3232;
   top: 0;
   border-radius: 0.2em;
-  color: white;
   height: 6%;
   width: 24%;
   opacity: 0.7;
@@ -124,18 +120,46 @@
   margin-top: -20px;
 }
 
-/* .right-box__dust__detailText {
-  position: absolute;
-  top: 0;
-  left: 0;
-} */
 .right-box__dust__detailText h2 {
-  /* padding: 10px; */
   margin-left: 1.5%;
   margin-right: 1.5%;
-  color: white;
 }
 .right-box__dust__detailText h2,
 .right-box__dust__detailText i {
   display: inline;
+}
+
+.right-box__bottom {
+  margin-top: 37%;
+  text-align: right;
+  text-shadow: 2px 2px 2px gray;
+  margin-right: 2.5%;
+}
+
+.right-box__bottom__location h1,
+.right-box__bottom__location h2 {
+  display: inline;
+}
+
+.right-box__bottom__location h2 {
+  margin-right: 0.5%;
+  font-size: 45px;
+}
+
+.right-box__bottom__location h1 {
+  font-size: 100px;
+}
+
+.right-box__bottom__weather i,
+.right-box__bottom__weather h1 {
+  display: inline;
+}
+
+.right-box__bottom__weather i {
+  font-size: 80px;
+  margin-right: 0.5%;
+}
+
+.right-box__bottom__weather h1 {
+  font-size: 100px;
 }

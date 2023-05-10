@@ -33,6 +33,16 @@
             </div>
           </div>
         </div>
+        <div class="right-box__bottom">
+          <div class="right-box__bottom__location">
+            <h2>Korea</h2>
+            <h1>Seoul</h1>
+          </div>
+          <div class="right-box__bottom__weather">
+            <i class="fa-solid fa-cloud"></i>
+            <h1>14°C</h1>
+          </div>
+        </div>
       </div>
     </div>
   </div>
