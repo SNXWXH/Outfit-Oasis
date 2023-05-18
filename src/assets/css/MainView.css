@@ -61,6 +61,66 @@
   font-size: 20px;
 }
 
+.detail {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  width: 30%;
+}
+
+.detail__slide {
+  width: 100%;
+}
+
+.detail__v-card {
+  background-color: transparent !important;
+  box-shadow: none;
+}
+
+.detail__v-card h1 {
+  color: white;
+  font-size: 35px;
+  padding-bottom: 4%;
+  text-align: left;
+  width: 90%;
+  border-bottom: 2px solid white;
+  margin-left: 5%;
+  margin-bottom: 7%;
+}
+.detail__v-card-outfit h2 {
+  color: white;
+  font-size: 18px;
+  padding-bottom: 8%;
+  text-align: left;
+  width: 100%;
+  margin-left: 5%;
+}
+.detail__v-card-weather h2 {
+  display: inline;
+  color: white;
+  font-size: 18px;
+  text-align: left;
+  width: 100%;
+  margin-left: 5%;
+}
+
+.detail__v-card-temp,
+.detail__v-card-humidity,
+.detail__v-card-wind,
+.detail__v-card-cloud {
+  padding-bottom: 11%;
+}
+
+.detail__v-card-temp h2:nth-child(2),
+.detail__v-card-humidity h2:nth-child(2),
+.detail__v-card-wind h2:nth-child(2),
+.detail__v-card-cloud h2:nth-child(2) {
+  text-align: right;
+  position: absolute;
+  right: 5%;
+}
+
 /* 오른쪽 박스 */
 .right-box {
   width: 70%;
