@@ -4,16 +4,18 @@ import history from "connect-history-api-fallback";
 
 export default (app) => {
   app.get("/status", (req, res) => {
+    console.log("status");
     res.status(200).send("status");
   });
-  console.log(routes);
+  console.log("hi");
   app.disable("x-powered-by");
-  app.use(history());
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+
+  app.use("/api", routes());
+  app.use(history());
   console.log("express");
-  app.use(routes);
 
   app.use((req, res, next) => {
     const err = new Error("Not Found");
