@@ -3,7 +3,7 @@ import CryptoJS from "crypto-js";
 import axios from "axios";
 
 export default (router) => {
-  router.get("/location", (req, res) => {
+  router.get("/location", async (req, res) => {
     const access_key = config.naver_access_key; //발급받은 api Key 입력
     const secret_key = config.naver_secret_key; //발급받은 Secret_key 입력
 
@@ -45,12 +45,13 @@ export default (router) => {
       };
       // console.log(list);
       let a = await axios.get(`${hostName}${baseString}`, config); //내가 밖으로 내보내고 싶은값
-      console.log(a);
       list.b = a.data;
-      return a;
+      console.log(list.b);
+      // return a;
     }
 
-    map();
+    await map();
+    console.log(list);
 
     // console.log("asdkjlasdlasd", list);
 
@@ -76,5 +77,6 @@ export default (router) => {
 
       return hash.toString(CryptoJS.enc.Base64);
     }
+    res.json(list.b);
   });
 };

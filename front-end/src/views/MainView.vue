@@ -78,8 +78,8 @@
         </div>
         <div class="right-box__bottom">
           <div class="right-box__bottom__location">
-            <h2>Korea</h2>
-            <h1>Seoul</h1>
+            <h2>{{ location }}</h2>
+            <h1>{{ location_detail }}</h1>
           </div>
           <div class="right-box__bottom__weather">
             <i class="fa-solid fa-cloud"></i>
@@ -92,11 +92,17 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  data: () => ({
-    length: 2,
-    onboarding: 0,
-  }),
+  data() {
+    return {
+      length: 2,
+      onboarding: 0,
+      location: "",
+      location_detail: "",
+    };
+  },
   methods: {
     next() {
       this.onboarding =
@@ -106,6 +112,13 @@ export default {
       this.onboarding =
         this.onboarding - 1 <= 0 ? this.length : this.onboarding - 1;
     },
+  },
+  async created() {
+    const response = await axios.get("/api/location");
+    const location = response.data.geoLocation;
+    this.location = location.r1;
+    this.location_detail = location.r3;
+    console.log(location);
   },
 };
 </script>
