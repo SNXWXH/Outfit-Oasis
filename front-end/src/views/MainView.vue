@@ -54,7 +54,7 @@
       </div>
       <div class="right-box">
         <div class="right-box__day">
-          <h2>2023 May 01 Monday</h2>
+          <h2>{{ dateFormat() }}</h2>
         </div>
         <div class="right-box__dust">
           <h2>21㎍/㎥</h2>
@@ -93,6 +93,8 @@
 
 <script>
 import axios from "axios";
+import "moment/locale/ko";
+import moment from "moment";
 
 export default {
   data() {
@@ -112,13 +114,26 @@ export default {
       this.onboarding =
         this.onboarding - 1 <= 0 ? this.length : this.onboarding - 1;
     },
+    dateFormat() {
+      moment.lang("ko", {
+        weekdays: [
+          "일요일",
+          "월요일",
+          "화요일",
+          "수요일",
+          "목요일",
+          "금요일",
+          "토요일",
+        ],
+      });
+      return moment().format("YYYY MM DD dddd");
+    },
   },
   async created() {
     const response = await axios.get("/api/location");
     const location = response.data.geoLocation;
     this.location = location.r1;
     this.location_detail = location.r3;
-    console.log(location);
   },
 };
 </script>
