@@ -1,4 +1,3 @@
-// router.js
 import { getCurrentWeather } from "@/services/weatherService";
 
 export default (router) => {
