@@ -44,11 +44,9 @@ export default async function geoLocation() {
 
     let a = await axios.get(`${hostName}${baseString}`, config);
     list.b = a.data;
-    console.log(list.b);
   }
 
   await map();
-  console.log(list);
   return list.b;
 }
 
