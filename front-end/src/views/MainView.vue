@@ -32,20 +32,20 @@
               <h1>Weather Detail</h1>
               <div class="detail__v-card-weather">
                 <div class="detail__v-card-temp">
-                  <h2>Max/Min Temp</h2>
-                  <h2>3°C / 18°C</h2>
+                  <h2>하늘 상태</h2>
+                  <h2>{{ type }}</h2>
                 </div>
                 <div class="detail__v-card-humidity">
-                  <h2>Humidity</h2>
-                  <h2>60%</h2>
+                  <h2>습도</h2>
+                  <h2>{{ humi }}%</h2>
                 </div>
                 <div class="detail__v-card-wind">
-                  <h2>Wind</h2>
-                  <h2>734km/h</h2>
+                  <h2>풍속</h2>
+                  <h2>{{ wind }}m/s</h2>
                 </div>
                 <div class="detail__v-card-cloud">
-                  <h2>Cloudy</h2>
-                  <h2>80%</h2>
+                  <h2>1시간 강수량</h2>
+                  <h2>{{ rain }}mm</h2>
                 </div>
               </div>
             </v-card>
@@ -83,7 +83,7 @@
           </div>
           <div class="right-box__bottom__weather">
             <i class="fa-solid fa-cloud"></i>
-            <h1>14°C</h1>
+            <h1>{{ temp }}°C</h1>
           </div>
         </div>
       </div>
@@ -103,6 +103,11 @@ export default {
       onboarding: 0,
       location: "",
       location_detail: "",
+      temp: "",
+      humi: "",
+      wind: "",
+      rain: "",
+      type: "",
     };
   },
   methods: {
@@ -130,10 +135,34 @@ export default {
     },
   },
   async created() {
-    const response = await axios.get("/api/location");
-    const location = response.data.geoLocation;
+    const responseLocation = await axios.get("/api/location");
+    const location = responseLocation.data.geoLocation;
     this.location = location.r1;
     this.location_detail = location.r3;
+
+    const responseWeather = await axios.get("/api/weather");
+    const weather = responseWeather.data.response.body.items;
+    this.temp = weather.item[3].obsrValue;
+    this.humi = weather.item[1].obsrValue;
+    this.wind = weather.item[7].obsrValue;
+    this.rain = weather.item[2].obsrValue;
+
+    // console.log(weather);
+
+    const preWeather = await axios.get("/api/preweather");
+    const preWea = preWeather.data.response.body.items;
+    const sky = preWea.item[4].fcstValue;
+    console.log(sky);
+
+    if (sky == 1) {
+      this.type = "맑음";
+    } else if (sky == 3) {
+      this.type = "구름많음";
+    } else if (sky == 4) {
+      this.type = "흐림";
+    }
+
+    console.log(preWea);
   },
 };
 </script>
