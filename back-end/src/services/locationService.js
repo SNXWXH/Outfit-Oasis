@@ -15,7 +15,7 @@ export default async function geoLocation() {
 
   async function map() {
     const sortedSet = {};
-    sortedSet["ip"] = "115.161.95.253"; //예시ip
+    sortedSet["ip"] = "1.221.229.37"; //예시ip 집: 115.161.95.253
     sortedSet["ext"] = "t";
     sortedSet["responseFormatType"] = "json";
 

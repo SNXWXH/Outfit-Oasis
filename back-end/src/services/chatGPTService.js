@@ -18,7 +18,7 @@ export async function communicateWithChatGPT(message) {
         {
           role: "user",
           content:
-            "하늘 상태는 구름이 많고, 1시간 강수량은 1mm이며, 온도가 18.2도인 날씨의 옷 추천해줘",
+            "하늘 상태는 맑다. 1시간 강수량은 1mm이다. 온도가 18.2도이다. 이런 날씨의 옷 추천해줘",
         },
         {
           role: "assistant",
@@ -55,4 +55,4 @@ async function main() {
   }
 }
 
-main();
+// main();

@@ -19,11 +19,11 @@
             <v-card elevation="2" class="detail__v-card">
               <h1>Today outfit</h1>
               <div class="detail__v-card-outfit">
-                <h2>• 방수 가능한 가벼운 자켓 또는 우비</h2>
-                <h2>• 방수 가능한 가벼운 자켓 또는 우비</h2>
-                <h2>• 방수 가능한 가벼운 자켓 또는 우비</h2>
-                <h2>• 방수 가능한 가벼운 자켓 또는 우비</h2>
-                <h2>• 방수 가능한 가벼운 자켓 또는 우비</h2>
+                <h2>{{ outfit[0][0] }}</h2>
+                <h2>{{ outfit[0][1] }}</h2>
+                <h2>{{ outfit[0][2] }}</h2>
+                <h2>{{ outfit[0][3] }}</h2>
+                <h2>{{ outfit[0][4] }}</h2>
               </div>
             </v-card>
           </v-window-item>
@@ -108,6 +108,7 @@ export default {
       wind: "",
       rain: "",
       type: "",
+      outfit: [],
     };
   },
   methods: {
@@ -152,7 +153,7 @@ export default {
     const preWeather = await axios.get("/api/preweather");
     const preWea = preWeather.data.response.body.items;
     const sky = preWea.item[4].fcstValue;
-    console.log(sky);
+    // console.log(sky);
 
     if (sky == 1) {
       this.type = "맑음";
@@ -162,7 +163,12 @@ export default {
       this.type = "흐림";
     }
 
-    console.log(preWea);
+    // console.log(preWea);
+
+    const chat = await axios.get("/api/chat");
+    const ans = chat.data;
+    this.outfit.push(ans.split("\n"));
+    console.log(this.outfit[0][1]);
   },
 };
 </script>
