@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="background">
-      <img src="@/assets/image/cloudy.gif" />
+      <!-- <img src="@/assets/image/rain.gif" /> -->
+      <img :src="`@fs/src/assets/image/${background}`" />
     </div>
     <div class="leftright">
       <div class="left-box"></div>
@@ -109,6 +110,7 @@ export default {
       rain: "",
       type: "",
       outfit: [],
+      background: "",
     };
   },
   methods: {
@@ -148,11 +150,22 @@ export default {
     this.wind = weather.item[7].obsrValue;
     this.rain = weather.item[2].obsrValue;
 
-    // console.log(weather);
+    const back = weather.item[0].obsrValue;
 
     const preWeather = await axios.get("/api/preweather");
     const preWea = preWeather.data.response.body.items;
     const sky = preWea.item[4].fcstValue;
+
+    if (back === 1 || back === 2 || back === 5 || back === 6)
+      this.background = "rain.gif";
+    else if (back === 3 || back === 7) this.background = "snow.gif";
+    else {
+      if (sky === 1) this.background = "sunny.gif";
+      else this.background = "cloudy.gif";
+    }
+    // this.background = "rain.gif";
+    console.log(weather);
+    console.log(back, this.background);
     // console.log(sky);
 
     if (sky == 1) {
@@ -168,7 +181,7 @@ export default {
     const chat = await axios.get("/api/chat");
     const ans = chat.data;
     this.outfit = ans.split("\n");
-    console.log(this.outfit);
+    // console.log(this.outfit);
   },
 };
 </script>
