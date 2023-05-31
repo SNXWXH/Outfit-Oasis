@@ -19,11 +19,11 @@
             <v-card elevation="2" class="detail__v-card">
               <h1>Today outfit</h1>
               <div class="detail__v-card-outfit">
-                <h2>{{ outfit[0][0] }}</h2>
-                <h2>{{ outfit[0][1] }}</h2>
-                <h2>{{ outfit[0][2] }}</h2>
-                <h2>{{ outfit[0][3] }}</h2>
-                <h2>{{ outfit[0][4] }}</h2>
+                <h2 v-html="outfit[0]"></h2>
+                <h2 v-html="outfit[1]"></h2>
+                <h2 v-html="outfit[2]"></h2>
+                <h2 v-html="outfit[3]"></h2>
+                <h2 v-html="outfit[4]"></h2>
               </div>
             </v-card>
           </v-window-item>
@@ -167,8 +167,8 @@ export default {
 
     const chat = await axios.get("/api/chat");
     const ans = chat.data;
-    this.outfit.push(ans.split("\n"));
-    console.log(this.outfit[0][1]);
+    this.outfit = ans.split("\n");
+    console.log(this.outfit);
   },
 };
 </script>

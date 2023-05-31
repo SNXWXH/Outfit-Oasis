@@ -37,6 +37,7 @@ export async function communicateWithChatGPT(message) {
     });
 
     const choices = response.data.choices[0].message.content;
+    // console.log(choices);
     return choices;
   } catch (error) {
     console.error("ChatGPT와 통신 중 오류 발생:", error);
