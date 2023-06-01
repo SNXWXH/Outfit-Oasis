@@ -2,52 +2,59 @@ import config from "@/config";
 import CryptoJS from "crypto-js";
 import axios from "axios";
 
-export default async function geoLocation() {
-  const access_key = config.naver_access_key;
-  const secret_key = config.naver_secret_key;
-  const requestMethod = "GET";
-  const hostName = "https://geolocation.apigw.ntruss.com";
-  const requestUrl = "/geolocation/v2/geoLocation";
-  const list = {
-    a: "aaaa",
-  };
-  const timeStamp = Math.floor(+new Date()).toString();
-
-  async function map() {
-    const sortedSet = {};
-    sortedSet["ip"] = "118.32.97.137"; //예시ip 집: 115.161.95.253
-    sortedSet["ext"] = "t";
-    sortedSet["responseFormatType"] = "json";
-
-    let queryString = Object.keys(sortedSet).reduce((prev, curr) => {
-      return prev + curr + "=" + sortedSet[curr] + "&";
-    }, "");
-
-    queryString = queryString.substr(0, queryString.length - 1);
-
-    const baseString = requestUrl + "?" + queryString;
-    const signature = makeSignature(
-      secret_key,
-      requestMethod,
-      baseString,
-      timeStamp,
-      access_key
-    );
-
-    const config = {
-      headers: {
-        "x-ncp-apigw-timestamp": timeStamp,
-        "x-ncp-iam-access-key": access_key,
-        "x-ncp-apigw-signature-v2": signature,
-      },
+export default async function geoLocation(ip) {
+  try {
+    const access_key = config.naver_access_key;
+    const secret_key = config.naver_secret_key;
+    const requestMethod = "GET";
+    const hostName = "https://geolocation.apigw.ntruss.com";
+    const requestUrl = "/geolocation/v2/geoLocation";
+    const list = {
+      a: "aaaa",
     };
+    const timeStamp = Math.floor(+new Date()).toString();
 
-    let a = await axios.get(`${hostName}${baseString}`, config);
-    list.b = a.data;
+    async function map() {
+      const sortedSet = {};
+      // sortedSet["ip"] = "121.162.117.11"; //예시ip 집: 118.32.97.137
+      sortedSet["ip"] = ip; //예시ip 집: 118.32.97.137
+
+      sortedSet["ext"] = "t";
+      sortedSet["responseFormatType"] = "json";
+
+      let queryString = Object.keys(sortedSet).reduce((prev, curr) => {
+        return prev + curr + "=" + sortedSet[curr] + "&";
+      }, "");
+
+      queryString = queryString.substr(0, queryString.length - 1);
+
+      const baseString = requestUrl + "?" + queryString;
+      const signature = makeSignature(
+        secret_key,
+        requestMethod,
+        baseString,
+        timeStamp,
+        access_key
+      );
+
+      const config = {
+        headers: {
+          "x-ncp-apigw-timestamp": timeStamp,
+          "x-ncp-iam-access-key": access_key,
+          "x-ncp-apigw-signature-v2": signature,
+        },
+      };
+
+      let a = await axios.get(`${hostName}${baseString}`, config);
+      list.b = a.data;
+    }
+
+    await map();
+    // console.log(list.b);
+    return list.b;
+  } catch (err) {
+    console.log("locationService");
   }
-
-  await map();
-  return list.b;
 }
 
 function makeSignature(secretKey, method, baseString, timestamp, accessKey) {

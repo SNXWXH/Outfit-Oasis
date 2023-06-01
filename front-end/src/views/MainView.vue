@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="background">
-      <!-- <img src="@/assets/image/rain.gif" /> -->
-      <img :src="`@fs/src/assets/image/${background}`" />
+      <!-- <img src="@/assets/image/cloudy.gif" /> -->
+      <img :src="`/image/${background}`" v-if="background" />
     </div>
     <div class="leftright">
       <div class="left-box"></div>
@@ -114,6 +114,7 @@ export default {
     };
   },
   methods: {
+    //슬라이드
     next() {
       this.onboarding =
         this.onboarding + 1 > this.length ? 1 : this.onboarding + 1;
@@ -122,6 +123,7 @@ export default {
       this.onboarding =
         this.onboarding - 1 <= 0 ? this.length : this.onboarding - 1;
     },
+    //데이터
     dateFormat() {
       moment.lang("ko", {
         weekdays: [
@@ -134,15 +136,17 @@ export default {
           "토요일",
         ],
       });
-      return moment().format("YYYY MM DD dddd");
+      return moment().format("YYYY . MM . DD dddd");
     },
   },
   async created() {
+    //현재 위치
     const responseLocation = await axios.get("/api/location");
     const location = responseLocation.data.geoLocation;
     this.location = location.r1;
     this.location_detail = location.r3;
 
+    //날씨(weather)
     const responseWeather = await axios.get("/api/weather");
     const weather = responseWeather.data.response.body.items;
     this.temp = weather.item[3].obsrValue;
@@ -150,23 +154,10 @@ export default {
     this.wind = weather.item[7].obsrValue;
     this.rain = weather.item[2].obsrValue;
 
-    const back = weather.item[0].obsrValue;
-
+    //날씨(preweather)
     const preWeather = await axios.get("/api/preweather");
     const preWea = preWeather.data.response.body.items;
     const sky = preWea.item[4].fcstValue;
-
-    if (back === 1 || back === 2 || back === 5 || back === 6)
-      this.background = "rain.gif";
-    else if (back === 3 || back === 7) this.background = "snow.gif";
-    else {
-      if (sky === 1) this.background = "sunny.gif";
-      else this.background = "cloudy.gif";
-    }
-    // this.background = "rain.gif";
-    console.log(weather);
-    console.log(back, this.background);
-    // console.log(sky);
 
     if (sky == 1) {
       this.type = "맑음";
@@ -178,6 +169,22 @@ export default {
 
     // console.log(preWea);
 
+    //배경화면
+    const back = weather.item[0].obsrValue;
+
+    if (back === 1 || back === 2 || back === 5 || back === 6)
+      this.background = "rain.gif";
+    else if (back === 3 || back === 7) this.background = "snow.gif";
+    else {
+      if (sky === 1) this.background = "sunny.gif";
+      else this.background = "cloudy.gif";
+    }
+    // this.background = "rain.gif";
+    // console.log(weather);
+    console.log(back, this.background);
+    // console.log(sky);
+
+    //옷차림
     const chat = await axios.get("/api/chat");
     const ans = chat.data;
     this.outfit = ans.split("\n");
@@ -187,6 +194,7 @@ export default {
 </script>
 
 <style>
+/* 폰트 적용 */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 * {
   font-family: "Montserrat", sans-serif;

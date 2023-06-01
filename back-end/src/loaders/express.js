@@ -5,6 +5,7 @@ import history from "connect-history-api-fallback";
 export default (app) => {
   app.get("/status", (req, res) => {
     console.log("status");
+    console.log(req.ip);
     res.status(200).send("status");
   });
   console.log("hi");

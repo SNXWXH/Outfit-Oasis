@@ -1,10 +1,22 @@
 import geoLocation from "@/services/locationService";
 import { getCurrentWeather } from "@/services/preWeatherService";
+import axios from "axios";
 
 export default (router) => {
   router.get("/preweather", async (req, res) => {
+    let ip;
     try {
-      const location = await geoLocation();
+      await axios
+        .get(
+          "https://api.ipgeolocation.io/ipgeo?apiKey=cd1632b2c9b24f949db4be57973979b1"
+        )
+        .then(async (response) => {
+          ip = response.data.ip;
+        })
+        .catch((error) => {
+          console.log("hi", error);
+        });
+      const location = await geoLocation(ip);
 
       const lat = Number(location.geoLocation.lat);
       const lng = Number(location.geoLocation.long);
