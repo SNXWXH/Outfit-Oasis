@@ -127,6 +127,7 @@
   height: 100vh;
   position: relative;
   z-index: 2;
+  /* align-content: space-between; */
 }
 
 .right-box__day {

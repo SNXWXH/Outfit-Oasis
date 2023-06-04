@@ -54,6 +54,7 @@
         </v-window>
       </div>
       <div class="right-box">
+        <!-- <div class="right-box-top"> -->
         <div class="right-box__day">
           <h2>{{ dateFormat() }}</h2>
         </div>
@@ -77,6 +78,7 @@
             </div>
           </div>
         </div>
+        <!-- </div> -->
         <div class="right-box__bottom">
           <div class="right-box__bottom__location">
             <h2>{{ location }}</h2>
@@ -179,10 +181,7 @@ export default {
       if (sky === 1) this.background = "sunny.gif";
       else this.background = "cloudy.gif";
     }
-    // this.background = "rain.gif";
-    // console.log(weather);
     console.log(back, this.background);
-    // console.log(sky);
 
     //옷차림
     const chat = await axios.get("/api/chat");
