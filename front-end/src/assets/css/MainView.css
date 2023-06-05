@@ -128,6 +128,7 @@
   position: relative;
   z-index: 2;
   /* align-content: space-between; */
+  position: relative;
 }
 
 .right-box__day {
@@ -197,10 +198,13 @@
 }
 
 .right-box__bottom {
-  margin-top: 37%;
+  margin-bottom: 2%;
   text-align: right;
   text-shadow: 2px 2px 2px gray;
-  margin-right: 2.5%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 2.5%;
 }
 
 .right-box__bottom__location h1,
