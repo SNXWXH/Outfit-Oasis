@@ -87,7 +87,7 @@
             <h1>{{ location_detail }}</h1>
           </div>
           <div class="right-box__bottom__weather">
-            <i class="fa-solid fa-cloud"></i>
+            <i :class="`${icon}`"></i>
             <h1>{{ temp }}°C</h1>
           </div>
         </div>
@@ -115,6 +115,7 @@ export default {
       type: "",
       outfit: [],
       background: "",
+      icon: "",
       isDetailBox: false,
     };
   },
@@ -143,6 +144,7 @@ export default {
       });
       return moment().format("YYYY . MM . DD dddd");
     },
+    //미세먼지 hover
     showDetailBox() {
       this.isDetailBox = true;
     },
@@ -178,19 +180,31 @@ export default {
       this.type = "흐림";
     }
 
-    // console.log(preWea);
+    //아이콘
+    const sunny = "fa-solid fa-sun";
+    const cloudy = "fa-solid fa-circle-question";
+    const rain = "fa-solid fa-raindrops";
+    const snow = "fa-solid fa-snowflake";
 
     //배경화면
     const back = weather.item[0].obsrValue;
 
-    if (back == 1 || back == 2 || back == 5 || back == 6)
+    if (back == 1 || back == 2 || back == 5 || back == 6) {
       this.background = "rain.gif";
-    else if (back == 3 || back == 7) this.background = "snow.gif";
-    else {
-      if (sky == 1) this.background = "sunny.gif";
-      else this.background = "cloudy.gif";
+      this.icon = rain;
+    } else if (back == 3 || back == 7) {
+      this.background = "snow.gif";
+      this.icon = snow;
+    } else {
+      if (sky == 1) {
+        this.background = "sunny.gif";
+        this.icon = sunny;
+      } else {
+        this.background = "cloudy.gif";
+        this.icon = cloudy;
+      }
     }
-    console.log(back, sky, this.background);
+    console.log(back, sky, this.background, this.icon);
 
     //옷차림
     const chat = await axios.get("/api/chat");
