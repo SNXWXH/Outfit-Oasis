@@ -58,7 +58,7 @@
           <h2>{{ dateFormat() }}</h2>
         </div>
         <div class="right-box__dust">
-          <h2>21㎍/㎥</h2>
+          <h2>{{ air_pollution }}㎍/㎥</h2>
           <i
             class="fa-solid fa-circle-question"
             @mouseenter="showDetailBox"
@@ -117,6 +117,7 @@ export default {
       background: "",
       icon: "",
       isDetailBox: false,
+      air_pollution: "",
     };
   },
   methods: {
@@ -210,7 +211,11 @@ export default {
     const chat = await axios.get("/api/chat");
     const ans = chat.data;
     this.outfit = ans.split("\n");
-    // console.log(this.outfit);
+
+    //미세먼지
+    const air = await axios.get("/api/air");
+    this.air_pollution = air.data;
+    console.log(this.air_pollution);
   },
 };
 </script>
