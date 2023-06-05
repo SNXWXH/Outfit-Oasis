@@ -69,15 +69,15 @@
           <div class="right-box__dust__detailText">
             <div class="right-box__dust__detailText1">
               <i class="fa-solid fa-circle" style="color: #1159d4"></i>
-              <h2>좋음 0 ~ 15</h2>
+              <h2>좋음 0 ~ 30</h2>
               <i class="fa-solid fa-circle" style="color: #4cd411"></i>
-              <h2>보통 16 ~ 35</h2>
+              <h2>보통 31 ~ 80</h2>
             </div>
             <div class="right-box__dust__detailText2">
               <i class="fa-solid fa-circle" style="color: #f2eb07"></i>
-              <h2>나쁨 36 ~ 75</h2>
+              <h2>나쁨 81 ~ 150</h2>
               <i class="fa-solid fa-circle" style="color: #d42e11"></i>
-              <h2>매우 나쁨 76 ~</h2>
+              <h2>매우 나쁨 151 ~</h2>
             </div>
           </div>
         </div>
@@ -182,7 +182,7 @@ export default {
 
     //아이콘
     const sunny = "fa-solid fa-sun";
-    const cloudy = "fa-solid fa-circle-question";
+    const cloudy = "fa-solid fa-cloud";
     const rain = "fa-solid fa-raindrops";
     const snow = "fa-solid fa-snowflake";
 

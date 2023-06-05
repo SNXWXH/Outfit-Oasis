@@ -163,10 +163,10 @@
   top: 0;
   border-radius: 0.2em;
   height: 6%;
-  width: 24%;
+  width: 25%;
   opacity: 0.7;
   margin-left: 74.6%;
-  padding: 1%;
+  padding: 0.7%;
   display: none;
 }
 
@@ -195,6 +195,10 @@
 .right-box__dust__detailText h2,
 .right-box__dust__detailText i {
   display: inline;
+}
+
+.right-box__dust__detailText1 {
+  margin-bottom: 1%;
 }
 
 .right-box__bottom {
