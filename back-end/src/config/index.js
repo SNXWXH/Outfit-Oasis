@@ -13,4 +13,5 @@ export default {
   ai_key: process.env.OPENAI_API_KEY,
   port: process.env.PORT,
   ipgeo_key: process.env.IPGEO_KEY,
+  air_key: process.env.DUST_KEY,
 };
