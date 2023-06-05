@@ -54,15 +54,18 @@
         </v-window>
       </div>
       <div class="right-box">
-        <!-- <div class="right-box-top"> -->
         <div class="right-box__day">
           <h2>{{ dateFormat() }}</h2>
         </div>
         <div class="right-box__dust">
           <h2>21㎍/㎥</h2>
-          <i class="fa-solid fa-circle-question"></i>
+          <i
+            class="fa-solid fa-circle-question"
+            @mouseenter="showDetailBox"
+            @mouseleave="hideDetailBox"
+          ></i>
         </div>
-        <div class="right-box__dust__detailBox">
+        <div :class="['right-box__dust__detailBox', { show: isDetailBox }]">
           <div class="right-box__dust__detailText">
             <div class="right-box__dust__detailText1">
               <i class="fa-solid fa-circle" style="color: #1159d4"></i>
@@ -78,7 +81,6 @@
             </div>
           </div>
         </div>
-        <!-- </div> -->
         <div class="right-box__bottom">
           <div class="right-box__bottom__location">
             <h2>{{ location }}</h2>
@@ -113,6 +115,7 @@ export default {
       type: "",
       outfit: [],
       background: "",
+      isDetailBox: false,
     };
   },
   methods: {
@@ -139,6 +142,12 @@ export default {
         ],
       });
       return moment().format("YYYY . MM . DD dddd");
+    },
+    showDetailBox() {
+      this.isDetailBox = true;
+    },
+    hideDetailBox() {
+      this.isDetailBox = false;
     },
   },
   async created() {
@@ -174,14 +183,14 @@ export default {
     //배경화면
     const back = weather.item[0].obsrValue;
 
-    if (back === 1 || back === 2 || back === 5 || back === 6)
+    if (back == 1 || back == 2 || back == 5 || back == 6)
       this.background = "rain.gif";
-    else if (back === 3 || back === 7) this.background = "snow.gif";
+    else if (back == 3 || back == 7) this.background = "snow.gif";
     else {
-      if (sky === 1) this.background = "sunny.gif";
+      if (sky == 1) this.background = "sunny.gif";
       else this.background = "cloudy.gif";
     }
-    console.log(back, this.background);
+    console.log(back, sky, this.background);
 
     //옷차림
     const chat = await axios.get("/api/chat");
