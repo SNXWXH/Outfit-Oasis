@@ -37,23 +37,9 @@ export async function communicateWithChatGPT(message) {
     });
 
     const choices = response.data.choices[0].message.content;
-    // console.log(choices);
     return choices;
   } catch (error) {
     console.error("ChatGPT와 통신 중 오류 발생:", error.response);
     throw error;
   }
 }
-
-async function main() {
-  const message =
-    "하늘의 상태는 맑고, 1시간 강수량은 0mm이며, 온도가 32도인 날씨의 옷 추천해줘";
-  try {
-    const responses = await communicateWithChatGPT(message);
-    console.log("ChatGPT 응답:", responses);
-  } catch (error) {
-    console.error("오류:", error);
-  }
-}
-
-// main();

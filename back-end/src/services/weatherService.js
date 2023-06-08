@@ -48,41 +48,12 @@ export async function getCurrentWeather(lat, lng) {
 
     const response = await axios.get(path);
     const ret = response.data;
-    // const weatherData = makeResponse(ret);
-
+    console.log(ret);
     return ret;
   } catch (error) {
     console.log("Error:", error.message);
     throw new Error("Failed to fetch weather data");
   }
-}
-
-function makeResponse(ret) {
-  let pty, reh, rn1, t1h, uuu, vec, vvv, wsd;
-  ret.response.body.items.item.forEach(function (it) {
-    if (it.category === "PTY") pty = it.obsrValue;
-    else if (it.category === "REH") reh = it.obsrValue;
-    else if (it.category === "RN1") rn1 = it.obsrValue;
-    else if (it.category === "T1H") t1h = it.obsrValue;
-    else if (it.category === "UUU") uuu = it.obsrValue;
-    else if (it.category === "VEC") vec = it.obsrValue;
-    else if (it.category === "VVV") vvv = it.obsrValue;
-    else if (it.category === "WSD") wsd = it.obsrValue;
-  });
-
-  if (pty === 0) {
-    pty = "sun";
-  } else if (pty === 1) {
-    pty = "rain";
-  } else if (pty === 2) {
-    pty = "rain/snow";
-  } else if (pty === 3) {
-    pty = "snow";
-  } else if (pty === 4) {
-    pty = "rain";
-  }
-
-  return { temp: t1h, wind: wsd, pty: pty };
 }
 
 // LCC DFS 좌표변환 ( code : "toXY"(위경도->좌표, v1:위도, v2:경도), "toLL"(좌표->위경도,v1:x, v2:y) )

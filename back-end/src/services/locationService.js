@@ -16,9 +16,7 @@ export default async function geoLocation(ip) {
 
     async function map() {
       const sortedSet = {};
-      // sortedSet["ip"] = "121.162.117.11"; //예시ip 집: 118.32.97.137
-      sortedSet["ip"] = ip; //예시ip 집: 118.32.97.137
-
+      sortedSet["ip"] = ip;
       sortedSet["ext"] = "t";
       sortedSet["responseFormatType"] = "json";
 
@@ -50,13 +48,13 @@ export default async function geoLocation(ip) {
     }
 
     await map();
-    // console.log(list.b);
     return list.b;
   } catch (err) {
     console.log("locationService");
   }
 }
 
+//api의 시그니처 키 생성
 function makeSignature(secretKey, method, baseString, timestamp, accessKey) {
   const space = " ";
   const newLine = "\n";

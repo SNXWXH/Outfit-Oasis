@@ -20,7 +20,6 @@ export default (router) => {
       const message = `하늘 상태는 ${sky}. 1시간 강수량은 ${rn1}이다. 온도는 ${temp}이다. 이런 날씨의 옷 추천해줘`;
 
       const responses = await communicateWithChatGPT(message);
-      // console.log(responses);
       res.json(responses);
     } catch (error) {
       console.error("Error:", error);

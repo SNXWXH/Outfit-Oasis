@@ -49,7 +49,6 @@ export async function getCurrentWeather(lat, lng) {
     const response = await axios.get(path);
     const ret = response.data;
     // const weatherData = makeResponse(ret);
-    // console.log(ret);
     return ret;
   } catch (error) {
     console.log("Error:", error.message);

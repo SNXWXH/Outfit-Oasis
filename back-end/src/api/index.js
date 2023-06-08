@@ -15,9 +15,5 @@ export default () => {
   chat(router);
   ip(router);
   air(router);
-
-  // console.log("router");
-  // console.log(router.get("/", (req, res) => res.send("hi")));
-
   return router;
 };

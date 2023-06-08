@@ -215,7 +215,6 @@ export default {
     //미세먼지
     const air = await axios.get("/api/air");
     this.air_pollution = air.data;
-    console.log(this.air_pollution);
   },
 };
 </script>
